@@ -21,7 +21,6 @@ namespace BuberDinner.Controllers
             var authResult = _authenticationService.Register(request.FirstName, request.LastName, request.Email, request.Password);
             var response = new AuthenticationResponse(authResult.Id, authResult.FirstName, authResult.LastName, authResult.Email, authResult.Token);
             return Ok(response);
-
         }
 
         [HttpPost("login")]

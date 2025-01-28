@@ -1,9 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>35304411-af49-4581-a4a3-08ce1c437991</UserSecretsId>
+    <RootNamespace>BuberDinner</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
