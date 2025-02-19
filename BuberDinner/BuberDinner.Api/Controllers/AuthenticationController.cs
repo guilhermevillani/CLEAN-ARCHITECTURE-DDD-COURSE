@@ -1,11 +1,13 @@
 ﻿using BuberDinner.Application.Services.Authentication;
 using BuberDinner.Contracts.Authentication;
+using BuberDinner.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuberDinner.Controllers
 {
     [ApiController]
     [Route("auth")]
+ 
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService _authenticationService;
@@ -19,7 +21,7 @@ namespace BuberDinner.Controllers
         public IActionResult Register([FromBody] RegisterRequest request)
         {
             var authResult = _authenticationService.Register(request.FirstName, request.LastName, request.Email, request.Password);
-            var response = new AuthenticationResponse(authResult.Id, authResult.FirstName, authResult.LastName, authResult.Email, authResult.Token);
+            var response = new AuthenticationResponse(authResult.User.Id, authResult.User.FirstName, authResult.User.LastName, authResult.User.Email, authResult.Token);
             return Ok(response);
         }
 
@@ -27,7 +29,7 @@ namespace BuberDinner.Controllers
         public IActionResult Login(LoginRequest request)
         {
             var authResult = _authenticationService.Login(request.Email, request.Password);
-            var response = new AuthenticationResponse(authResult.Id, authResult.FirstName, authResult.LastName, authResult.Email, authResult.Token);
+            var response = new AuthenticationResponse(authResult.User.Id, authResult.User.FirstName, authResult.User.LastName, authResult.User.Email, authResult.Token);
 
             return Ok(response);
 
